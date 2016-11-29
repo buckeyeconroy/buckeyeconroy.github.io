@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta name="baidu-site-verification" content="wiWJ3FVZuS" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="John Doe" />
+
+
+
+<meta name="description" content="有关 Yii2 的国际化之前很少使用，今天仔细的研究了下分享下心得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yii2 国际化的使用">
+<meta property="og:url" content="http://yoursite.com/2016/06/27/yii2-translation/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="有关 Yii2 的国际化之前很少使用，今天仔细的研究了下分享下心得">
+<meta property="og:updated_time" content="2016-06-27T04:13:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yii2 国际化的使用">
+<meta name="twitter:description" content="有关 Yii2 的国际化之前很少使用，今天仔细的研究了下分享下心得">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Yii2 国际化的使用 | Hexo</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?c536b75c04ea5adaa40031962531559d";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars2.githubusercontent.com/u/1832414?v=3&amp;s=460" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">John Doe</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:buckeye@live.cn" title="Email"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hello-World/">Hello World</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Qt/">Qt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c-c/">c/c++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hosts/">hosts</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii/">yii</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云笔记/">云笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂记/">杂记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编辑器/">编辑器</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">我只是一个平凡而又专注的码农</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">John Doe</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars2.githubusercontent.com/u/1832414?v=3&amp;s=460" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">John Doe</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:buckeye@live.cn" title="Email"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-yii2-translation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/27/yii2-translation/" class="article-date">
+      <time datetime="2016-06-27T03:40:11.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Yii2 国际化的使用
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/程序开发/">程序开发</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yii/">yii</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>有关 Yii2 的国际化之前很少使用，今天仔细的研究了下分享下心得</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="使用框架自带国际化"><a href="#使用框架自带国际化" class="headerlink" title="使用框架自带国际化"></a>使用框架自带国际化</h2><p>首先了解到 Yii2 默认有自带已经翻译好了的国际化文件在 vendor/yiisoft/yii2/messages 中。使用只需要在程序的 config 中添加语言配置。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$config = [</div><div class="line">    ...</div><div class="line">    languages = <span class="string">'zh-CN'</span> <span class="comment">//可以是其它语言如 en</span></div><div class="line">    ...</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>  刷新页面会发现诸如表单验证、控件等默认的文字现在已经可以使用中文了。当然框架自带的翻译内容有时候并不完全符合我们自己的使用习惯。</p>
+<h2 id="使用自定义国际化文件"><a href="#使用自定义国际化文件" class="headerlink" title="使用自定义国际化文件"></a>使用自定义国际化文件</h2><p>我们可以自定义框架默认的国际化的内容。这里不提倡直接修改框架源文件 vendor/yiisoft/yii2/messages 里的内容，那么怎么办呢？可以手工复制目录到自己程序的根目录，不过这里可以用框架自带的命令行工具快速生成 messages 文件。<br><code>yii message/config messages/config.php //首先生成国际化的路径和配置文件，路径和文件名建议用默认</code><br>会发现已经自动生成相应的文件。打开 config.php 做如下修改<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> [</div><div class="line">    ...</div><div class="line">    <span class="string">'sourcePath'</span> =&gt; <span class="string">'@app'</span>, <span class="comment">//国际化文件的路径</span></div><div class="line">    <span class="string">'messagePath'</span> =&gt; <span class="string">'@app/messages'</span>, <span class="comment">//国际化文件的路径</span></div><div class="line">    <span class="string">'languages'</span> =&gt; [<span class="string">'en'</span>, <span class="string">'zh-CN'</span>], <span class="comment">//需要国际化支持的语言版本</span></div><div class="line">    ...</div><div class="line">];</div></pre></td></tr></table></figure></p>
+<p>路径默认在 Yii 的源代码中，这里更改为自己项目的 messages 目录中。再次执行命令行<br><code>yii message messages/config.php</code><br>等待命令结束会自动生成相应的国际化文件，接下来就可以自定义和使用汉化内容了。首先需要修改程序配置文件<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$config = [</div><div class="line">    ...</div><div class="line">    languages = <span class="string">'zh-CN'</span> <span class="comment">//可以是其它语言如 en</span></div><div class="line">    ...</div><div class="line">    <span class="string">'i18n'</span> =&gt; [</div><div class="line">        <span class="string">'translations'</span> =&gt; [</div><div class="line">            <span class="string">'yii'</span> =&gt; [ <span class="string">'class'</span> =&gt; <span class="string">'yii\i18n\PhpMessageSource'</span>, <span class="string">'sourceLanguage'</span> =&gt; <span class="string">'en-US'</span>, <span class="string">'basePath'</span> =&gt; <span class="string">'@app/messages'</span> ], <span class="comment">//之前移植过来的框架自带的文件，可以自行修改使用</span></div><div class="line">            <span class="string">'app*'</span> =&gt; [</div><div class="line">                <span class="string">'class'</span> =&gt; <span class="string">'yii\i18n\PhpMessageSource'</span>,</div><div class="line">                <span class="comment">//'basePath' =&gt; '@app/messages',</span></div><div class="line">                <span class="comment">//'sourceLanguage' =&gt; 'en-US',</span></div><div class="line">                <span class="string">'fileMap'</span> =&gt; [</div><div class="line">                        <span class="string">'app'</span> =&gt; <span class="string">'app.php'</span>,</div><div class="line">                        <span class="string">'app/error'</span> =&gt; <span class="string">'error.php'</span>,</div><div class="line">                ],</div><div class="line">            ], <span class="comment">//这是我们自定义的国际化文件</span></div><div class="line">        ],</div><div class="line">    ],</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>代码里只需要使用<code>Yii::t(&#39;app&#39;, &#39;hello&#39;);//app就是上面配置的前缀名称</code>就可以对文本内容进行国际化。</p>
+
+      
+    </div>
+    
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/06/27/yii2-translation/">Yii2 国际化的使用</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">John Doe</a></p>
+        <p><span>发布时间:</span>2016-06-27, 11:40:11</p>
+        <p><span>最后更新:</span>2016-06-27, 12:13:24</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/27/yii2-translation/" title="Yii2 国际化的使用">http://yoursite.com/2016/06/27/yii2-translation/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/06/27/yii2-translation/　　作者: John Doe" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/06/21/new-start/">
+                    新的开始
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+	<! -- 添加捐赠图标 -->
+<div class ="post-donate">
+    <div id="donate_board" class="donate_bar center">
+        <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏"></a>
+        <span class="donate_txt">
+           ↑<br>
+		   欣赏此文？求鼓励，求支持！
+        </span>
+        <br>
+      </div>  
+	<div id="donate_guide" class="donate_bar center hidden" >
+		<!-- 支付宝打赏图案 -->
+		<img src="/img/tb-dashang.png" alt="支付宝打赏"> 
+		<!-- 微信打赏图案 -->
+		<img src="/img/wx-dashang.jpg" alt="微信打赏">  
+    </div>
+	<script type="text/javascript">
+		document.getElementById('btn_donate').onclick = function(){
+			$('#donate_board').addClass('hidden');
+			$('#donate_guide').removeClass('hidden');
+		}
+	</script>
+</div>
+<! -- 添加捐赠图标 -->
+
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用框架自带国际化"><span class="toc-number">1.</span> <span class="toc-text">使用框架自带国际化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用自定义国际化文件"><span class="toc-number">2.</span> <span class="toc-text">使用自定义国际化文件</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script>
+    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+</script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Yii2 国际化的使用　| Hexo　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" data-thread-key="2016/06/27/yii2-translation/" data-title="Yii2 国际化的使用" data-url="http://yoursite.com/2016/06/27/yii2-translation/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"buckeyeconroy"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/06/21/new-start/" title="下一篇: 新的开始">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/27/yii2-translation/">Yii2 国际化的使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/21/new-start/">新的开始</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/21/hosts-file-editor/">Hosts File Editor</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/16/VS-Code-introduce/">VS Code 介绍</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/16/Leanote-introduce/">Leanote 云笔记 - 蚂蚁笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/live-and-survival/">生活也是生存</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/15/hello-world/">你好世界</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 John Doe
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.0">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
