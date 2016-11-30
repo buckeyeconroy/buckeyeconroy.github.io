@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+    
+    <entry>
+      <title><![CDATA[工作需要，新电脑收到，开工~]]></title>
+      <url>%2F2016%2F11%2F29%2Fnew-macbook%2F</url>
+      <content type="text"><![CDATA[新款15寸带把儿的MacBook Pro到货并使用了一周，真是大出血T_T但是物有所值。大病初愈之后食补药补、康复训练、工具齐备可以梦想起航了。 另分享下新版macbookpro的体验吧： 做工和外观一流，简直像艺术品:)体积和厚度不输其它品牌13寸你敢信？新版蝴蝶键盘在保证体积的同时增加的更好的按键反馈，按键密度相对更紧凑。不过手感自然是不如普通键盘。 新版键盘增加了一条炫酷的multi-touch bar，可以对适配过的各类app显示个性化的按钮和内容，把键盘变成了一个输入输出设备。不过目前来说对码农并没有实质性的作用。。。毕竟盲打毫无触感。另外终于在笔记本上加入了iphone的指纹解锁和Apple Pay(国内暂时不支持) 音质有提升。。不过经证实装windows会烧音箱所以劝各位不要轻易尝试了。 机身只有4个type-c&amp;雷电三接口。出门在外可能需要配备一堆转接线了。经测试dell的da200(use、hdmi、vga、lan)可用。外设方面买了一个小米刚出的蓝牙|无线双信道鼠标，样子是丑了点但是好在简约小巧便于携带。 开发方面Mac系统的unix内核真是对程序员很友好，习惯了终端命令行已经对windows无感了。常用的开发工具几乎都可以用Homebrew这个包管理器安装，配置起来也很简单。编辑器用微软的VSC。网站开发环境用的是MAMP整合包。IDE用的phpstorm性能比windows下好很多。数据库工具用的Sequel Pro。至于ASP.NET据说微软已经开始测试MAC版本的VS还是很期待的。游戏开发Unity、Cocos2dx自然不在话下。 说了这么多，总体对新电脑还是非常满意的。毕竟第一次用苹果电脑，以后慢慢熟悉~✌️]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Yii2 国际化的使用]]></title>
+      <url>%2F2016%2F06%2F27%2Fyii2-translation%2F</url>
+      <content type="text"><![CDATA[有关 Yii2 的国际化之前很少使用，今天仔细的研究了下分享下心得 使用框架自带国际化首先了解到 Yii2 默认有自带已经翻译好了的国际化文件在 vendor/yiisoft/yii2/messages 中。使用只需要在程序的 config 中添加语言配置。12345$config = [ ... languages = 'zh-CN' //可以是其它语言如 en ...] 刷新页面会发现诸如表单验证、控件等默认的文字现在已经可以使用中文了。当然框架自带的翻译内容有时候并不完全符合我们自己的使用习惯。 使用自定义国际化文件我们可以自定义框架默认的国际化的内容。这里不提倡直接修改框架源文件 vendor/yiisoft/yii2/messages 里的内容，那么怎么办呢？可以手工复制目录到自己程序的根目录，不过这里可以用框架自带的命令行工具快速生成 messages 文件。yii message/config messages/config.php //首先生成国际化的路径和配置文件，路径和文件名建议用默认会发现已经自动生成相应的文件。打开 config.php 做如下修改1234567return [ ... 'sourcePath' =&gt; '@app', //国际化文件的路径 'messagePath' =&gt; '@app/messages', //国际化文件的路径 'languages' =&gt; ['en', 'zh-CN'], //需要国际化支持的语言版本 ...]; 路径默认在 Yii 的源代码中，这里更改为自己项目的 messages 目录中。再次执行命令行yii message messages/config.php等待命令结束会自动生成相应的国际化文件，接下来就可以自定义和使用汉化内容了。首先需要修改程序配置文件12345678910111213141516171819$config = [ ... languages = 'zh-CN' //可以是其它语言如 en ... 'i18n' =&gt; [ 'translations' =&gt; [ 'yii' =&gt; [ 'class' =&gt; 'yii\i18n\PhpMessageSource', 'sourceLanguage' =&gt; 'en-US', 'basePath' =&gt; '@app/messages' ], //之前移植过来的框架自带的文件，可以自行修改使用 'app*' =&gt; [ 'class' =&gt; 'yii\i18n\PhpMessageSource', //'basePath' =&gt; '@app/messages', //'sourceLanguage' =&gt; 'en-US', 'fileMap' =&gt; [ 'app' =&gt; 'app.php', 'app/error' =&gt; 'error.php', ], ], //这是我们自定义的国际化文件 ], ],] 代码里只需要使用Yii::t(&#39;app&#39;, &#39;hello&#39;);//app就是上面配置的前缀名称就可以对文本内容进行国际化。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[新的开始]]></title>
+      <url>%2F2016%2F06%2F21%2Fnew-start%2F</url>
+      <content type="text"><![CDATA[提早的体验了一把退休生活，静下心来感悟一下人生还是不错的。身体状况不错，也该回到普通人的生活了，需要慢慢的适应。身子有点儿散，脑袋有点儿空都快跟不上社会节奏了。。。以后要善待自己的身体别觉得自己年轻就不注意，健康第一，当然钱也是很重要的~加油把失去的都补回来吧。 有希望有梦想，善待自己充实自己的人生。不论结果如何，都坦然面对。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Hosts File Editor]]></title>
+      <url>%2F2016%2F06%2F21%2Fhosts-file-editor%2F</url>
+      <content type="text"><![CDATA[介绍休息了好久，恢复状态就用 Qt 框架做个小工具吧。经常性的复制编辑 hosts 文件实在有点儿麻烦，索性做个编辑器。Qt 是个好框架，业余零碎的学了点儿皮毛。跨平台、易开发、开源等特点用起来还是不错的，就是最终生成的体积大了点儿。虽然可以自己按需编译 Qt 的源代码不过懒得折腾。 特点概要 默认打开并修改系统默认 Hosts 文件 基于树型列表而非以文本格式解析 Hosts 文件 保存时备份原始文件，自带清空DNS缓存 界面精美，参考QQ音乐设计 下载地址百度云 - 解压密码：rk230开发心得Qt 的 Model/View/Delegate 模式感觉跟 WPF 的数据绑定都比较经典的 MVC 模式。为了简单用了 Qt 中的 TreeWidget 不需要自己实现 model。程序里用到了继承于 QStyledItemDelegate 的代理类用来处理ip和域名的特殊编辑框。使用中发现 TreeWidget 的 CurrentItem 并没有办法自动清除需要手动 setCurrentItem 赋空值。Qt 中空值可以用 Q_NULLPTR 这个宏。Qt 中的 QMessageBox 竟然没有自带国际化翻译，需要手动从 Qt 的安装路径找到汉化文件 qt_zh_CN.qm 打包到程序中并在代码中使用1234QApplication a(argc, argv);QTranslator translator;translator.load(QString(":/statics/ts/qt_zh_CN.qm"));a.installTranslator(&amp;translator); Qt Creator 竟然没有图形化的方式设置程序图标。所以麻烦些手动创建资源文件 xxx.rc 加入 IDI_ICON ICON DISCARDABLE &quot;statics/icon/app.ico&quot; 并在 pro 项目文件中 RC_FILE += icon.rc\ 另外因为本程序需要系统文件的读写权限需要新建 uac.manifest 清单文件12345678910&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt; &lt;trustInfo xmlns="urn:schemas-microsoft-com:asm.v3"&gt; &lt;security&gt; &lt;requestedPrivileges&gt; &lt;requestedExecutionLevel level="requireAdministrator"/&gt; &lt;/requestedPrivileges&gt; &lt;/security&gt; &lt;/trustInfo&gt;&lt;/assembly&gt; Qt 因为有 QStyle 和 QStylesheet 的存在界面可制定化特别给力，几乎跟 css 一样的语法，前端也可以做桌面 UI 不要太爽。参考 QQ 音乐撸了一个感觉还不错。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[VS Code 介绍]]></title>
+      <url>%2F2016%2F06%2F16%2FVS-Code-introduce%2F</url>
+      <content type="text"><![CDATA[前言写代码写的久了用什么都不是很顺手。大型 IDE 就太笨重有些电脑跑不动，修改个小地方开个项目就要几分钟。普通的编辑器吧又太简陋。处女座的我遭不住了开始如下的一番折腾： notepad++ 一直作为必备工具用了好久，不过毕竟跟不上形式了。 Windows 上就别提什么 vim 了没啥原汁原味。 Sublime Text 的出现让眼前一亮 - 精美的外观强大的扩展虽然不开源勉强用着还行。 Github 的 Atom 仿佛拥有了一切却失去的最基本的速度和流畅性。 介绍和心得好吧这时候微软坐不住了，竟然弄出了 vs code 这个东西竟然还开源你敢信，跟 atom 一样 基于 electron 这个web应用开发内核（研究了下感觉还不错）。优点呢相对于 atom 对 javascript、typescript、markdown、微软系做了强大的原生支持，更好的启动速度，自带 Git 、调试功能、文件比对和分屏。虽然扩展性和界面制定比不上 atom ，关键是启动速度实在是比 atom 好太多！太多！太多！现在更新到1.2版本了，还自带汉化这不是拉拢小白的节奏么。平时开发用 php 和 web 比较多。感觉对 php 的支持不是很好 代码自动完成也只支持基本的函数库并不能多文件，写博文和日记 markdown 用的比较多还是蛮方便的。 推荐几个扩展吧: [background] 设置编辑器背景图自带萌物 [Crane - PHP Intellisense] php代码提示 [vscode-todo] 代码 TODO 跳转 [Material-theme] 各编辑器的经典皮肤 下载地址[Visual Studio Code]]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[Leanote 云笔记 - 蚂蚁笔记]]></title>
+      <url>%2F2016%2F06%2F16%2FLeanote-introduce%2F</url>
+      <content type="text"><![CDATA[前言平时工作生活总要用到云笔记的，对我来说首先要满足几点 - 速度快、云同步、隐私安全、markdown、跨平台、团队协作和分享。（这要求也是太多了 - -!）老传统对比几个云笔记： 印象笔记 Evernote - 不支持 markdown。功能太多笨重。 为知笔记 - markdown 支持格式不完善，编辑器不行。 有道云笔记 - 手机端没有 markdown。 石墨笔记 - 小清新说实话还是蛮喜欢的，遗憾不支持单独设置密码。最后选择了 leanote 的原因，就是因为它开源并且比较技术宅风格，可能会觉得界面比较老图。而且目测自带一个在线版的 hexo 博客。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[生活也是生存]]></title>
+      <url>%2F2016%2F06%2F15%2Flive-and-survival%2F</url>
+      <content type="text"><![CDATA[2015 - 2016 度过了以往人生中最痛苦难忘一段时光。人生百态，世事无常。有的人安逸的生活，有的人却在艰难的生存着。身心的痛苦经历了太多，人情的冷暖体会的太深。关键时刻能依靠的唯有自己，渺小和无助还是因为自己还不够强大。有些事无法改变，有些东西也必定会失去。未来无法预计，始终保持一颗平常心、善待自己、做好自己力所能及的事情，用心的品位生活的滋味。努力了，尽力了也就无愧于心。我始终还留有那份梦想和执着~ 就像一头骄傲的孤狼，静静的舔着自己的伤口独自冒雪前行。]]></content>
+    </entry>
+
+    
+    <entry>
+      <title><![CDATA[你好世界]]></title>
+      <url>%2F2016%2F06%2F15%2Fhello-world%2F</url>
+      <content type="text"><![CDATA[在这个技术宅风格的博客系统 Hexo 里做一个经典的程序员似的开场白~ 看教程折腾了一小会儿感觉还不错，估计会有些问题以后再修复吧。 本屌只是一个平凡的码农，要的就是这样一个简单的个性洋溢的清修之所。 下面是Hexo的简单使用，做个记号。查看官网 帮助文档 了解更多信息。 快捷命令发表一个博文1$ hexo new "My New Post" 更多信息: Writing 启动服务器1$ hexo server 更多信息: Server 生成静态文件1$ hexo generate 更多信息: Generating 部署到远程服务器1$ hexo deploy 更多信息: Deployment]]></content>
+    </entry>
+
+    
+  
+  
+</search>
